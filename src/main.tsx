@@ -1,3 +1,4 @@
+import { TodosProvider } from './contexts/TodosContext.tsx'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
@@ -5,6 +6,8 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <TodosProvider>
+      <App />
+    </TodosProvider>
   </React.StrictMode>,
 )

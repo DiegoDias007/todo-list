@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Logo from "./Logo";
 
-const Container = styled.div`
+const StyledHeader = styled.header`
   height: 150px;
   width: 100%;
   display: flex;
@@ -9,16 +10,11 @@ const Container = styled.div`
   background-color: #0D0D0D;
 `
 
-const Logo = styled.img`
-  width: 130px;
-  height: 50px;
-`
-
 function Header() {
   return (
-    <Container>
-      <Logo src="Logo.png"/>
-    </Container>
+    <StyledHeader>
+      <Logo />
+    </StyledHeader>
   )
 }
 
