@@ -51,6 +51,9 @@ const Button = styled.button`
   height: 100%;
   font-size: 14px;
   font-weight: 700;
+  label {
+    cursor: pointer;
+  }
   
   &:hover {
     background-color: #4EA8DE;
