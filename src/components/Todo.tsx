@@ -5,87 +5,94 @@ import Trash from "./Trash";
 import Checkbox from "./Checkbox";
 
 const StyledTodo = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #333333;
-  border-radius: 8px;
-  padding: 16px;
-  width: 100%;
-  background-color: #262626;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid #333333;
+	border-radius: 8px;
+	padding: 16px;
+	width: 100%;
+	background-color: #262626;
 `;
 
 const Label = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-`
-
-const StyledCheckbox = styled.div<{ checked: boolean }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #4EA8DE;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 80%;
-  }
-
-  ${(props) => props.checked && css`
-    background-color: #5E60CE;
-    border-color: #5E60CE;
-  `}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
 `;
 
-const Text = styled.span<{completed: boolean}>`
-  font-size: 14px;
-  line-height: 20px;
+const StyledCheckboxWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 24px;
+	min-height: 24px;
+`;
 
-  ${(props) => props.completed && css`
-    text-decoration: line-through;
-    color: #808080;
-  `}
-`
+const StyledCheckbox = styled.div<{ checked: boolean }>`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid #4ea8de;
+	border-radius: 50%;
+	width: 18px;
+	height: 18px;
+	cursor: pointer;
+
+	&:hover {
+		opacity: 80%;
+	}
+
+	${(props) => props.checked && css`
+			background-color: #5e60ce;
+			border-color: #5e60ce;
+		`}
+`;
+
+const Text = styled.span<{ completed: boolean }>`
+	font-size: 14px;
+	line-height: 20px;
+
+	${(props) =>
+		props.completed &&
+		css`
+			text-decoration: line-through;
+			color: #808080;
+		`}
+`;
 
 const DeleteButton = styled.button`
-  cursor: pointer;
-  background-color: #262626;
-  border: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
+	cursor: pointer;
+	background-color: #262626;
+	border: 0;
+	width: 24px;
+	height: 24px;
+	border-radius: 4px;
 
-  &:hover {
-    background-color: #333333;
-  }
-`
+	&:hover {
+		background-color: #333333;
+	}
+`;
 
 function Todo({ id, text, completed }: TodoType) {
-  const { deleteTodo, setCompleted } = useTodos();
+	const { deleteTodo, setCompleted } = useTodos();
 
-  return (
-    <StyledTodo>
-      <Label>
-        <StyledCheckbox
-          checked={completed}
-          onClick={() => setCompleted(id)}
-        >
-          {completed && <Checkbox />}
-        </StyledCheckbox>
-        <Text completed={completed}>
-          {text}
-        </Text>
-      </Label>
-      <DeleteButton onClick={() => deleteTodo(id)}>
-        <Trash />
-      </DeleteButton>
-    </StyledTodo>
-  );
+	return (
+		<StyledTodo>
+			<Label>
+				<StyledCheckboxWrapper>
+					<StyledCheckbox checked={completed} onClick={() => setCompleted(id)}>
+						{completed && <Checkbox />}
+					</StyledCheckbox>
+				</StyledCheckboxWrapper>
+				<Text completed={completed}>{text}</Text>
+			</Label>
+			<DeleteButton onClick={() => deleteTodo(id)}>
+				<Trash />
+			</DeleteButton>
+		</StyledTodo>
+	);
 }
 
 export default Todo;

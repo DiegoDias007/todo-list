@@ -12,8 +12,7 @@ const StyledApp = styled.div`
 const Main = styled.main`
   flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: #1A1A1A;
   color: white;
   width: 100%;
@@ -21,17 +20,16 @@ const Main = styled.main`
 `
 
 const Container = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 736px;
+  margin: 0px 15px;
   width: 100%;
   position: relative;
 `
 
 function App() {
-
   return (
     <StyledApp>
       <Header />
