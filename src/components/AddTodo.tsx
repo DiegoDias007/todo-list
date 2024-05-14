@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import PlusIcon from "./PlusIcon";
 import { useTodos } from "../hooks/useTodos";
@@ -64,7 +64,15 @@ function AddTodo() {
   const [todo, setTodo] = useState<string>("");
   const { todos, addTodo } = useTodos();
   const { updateLocalStorage } = useLocalStorage("todos");
-  
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     
@@ -91,6 +99,7 @@ function AddTodo() {
         onSubmit={handleSubmit}
       >
         <Input 
+          ref={inputRef}
           placeholder="Adicione uma nova tarefa"
           value={todo}
           onChange={handleInputChange} 
