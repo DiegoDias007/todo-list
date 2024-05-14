@@ -17,12 +17,14 @@ const Text = styled.label<{ weight: number }>`
 	color: #808080;
 	font-size: 16px;
 	font-weight: ${(props) => props.weight};
+  text-align: center;
 `;
 
 const Box = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+  gap: 5px;
 `;
 
 function NoTodos() {
