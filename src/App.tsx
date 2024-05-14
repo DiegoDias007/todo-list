@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Header from "./components/Header"
 import AddTodo from "./components/AddTodo"
+import TodoList from "./components/TodoList"
 
 const StyledApp = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const Main = styled.main`
   background-color: #1A1A1A;
   color: white;
   width: 100%;
+  height: 100%;
 `
 
 const Container = styled.div`
@@ -36,6 +38,7 @@ function App() {
       <Main>
         <Container>
           <AddTodo />
+          <TodoList />
         </Container>
       </Main>
     </StyledApp>

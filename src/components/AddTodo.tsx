@@ -61,8 +61,7 @@ function AddTodo() {
   const [todo, setTodo] = useState<string>("");
   const { todos, addTodo } = useTodos();
   const { updateLocalStorage } = useLocalStorage("todos");
-  console.log(todos);
-
+  
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     
