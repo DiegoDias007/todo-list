@@ -42,7 +42,7 @@ function Info() {
       </TextContainer>
       <TextContainer>
         <Text color="#8284FA">Concluídas</Text>
-        <Box >{done}</Box>
+        <Box >{done} de {total}</Box>
       </TextContainer>
     </StyledInfo>
   )
