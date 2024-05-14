@@ -65,6 +65,8 @@ function AddTodo() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
     
+    if (todo.length === 0) return;
+
     const newTodo = {
       id: Date.now(),
       text: todo,
