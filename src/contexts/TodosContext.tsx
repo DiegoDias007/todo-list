@@ -25,7 +25,7 @@ interface TodosProviderProps {
 }
 
 function TodosProvider({ children }: TodosProviderProps) {
-  const { value } = useLocalStorage<Todo[]>("todos");
+  const { value, updateLocalStorage } = useLocalStorage<Todo[]>("todos");
   const [todos, setTodos] = useState<Todo[]>(value);
   const total = todos.length;
   const done = todos.filter((todo) => todo.completed === true).length;
@@ -35,12 +35,17 @@ function TodosProvider({ children }: TodosProviderProps) {
     total,
     done,
     addTodo: (todo: Todo) => setTodos((prevTodos) => [...prevTodos, todo]),
-    deleteTodo: (todoId: number) => setTodos((prevTodos) => prevTodos.filter(
-      (todo) => todo.id != todoId
-    )),
-    setCompleted: (todoId: number) => setTodos((prevTodos) => prevTodos.map((todo) => {
-      return todo.id === todoId ? { ...todo, completed: !todo.completed } : todo;
-    }))
+    deleteTodo: (todoId: number) => {
+      const newTodos = todos.filter((todo) => todo.id != todoId);
+      setTodos(newTodos);
+      updateLocalStorage(newTodos);
+    },
+    setCompleted: (todoId: number) => {
+      const newTodos = todos.map((todo) => {
+        return todo.id === todoId ? { ...todo, completed: !todo.completed } : todo});
+      setTodos(newTodos);
+      updateLocalStorage(newTodos);
+    }
   };
 
   return (
